@@ -43,7 +43,7 @@ func main() {
 		modules.ShowBody(resp)
 	}
 
-modules.BruteForce()
+modules.BruteForce(url)
 }
 
 
