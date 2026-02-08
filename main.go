@@ -20,6 +20,10 @@ func main() {
 
 	textBoolPtr := flag.Bool("text", false, "Get the response text")
 	headBoolPtr := flag.Bool("head", false, "Get the response header")
+	bustBoolPtr := flag.Bool("bust", false, "Brute-force web directories")
+	workerIntPtr := flag.Int("workers", 20, "Number of workers for directory busting")
+	filterCodeIntPtr := flag.Int("filter", 0, "Only show brute-forced paths with a specific status code")
+	verboseBoolPtr := flag.Bool("verbose", false, "Verbose output for brute-forcing")
 
 	flag.Parse()
 
@@ -42,8 +46,12 @@ func main() {
 	if *textBoolPtr == true {
 		modules.ShowBody(resp)
 	}
+	
+	if *bustBoolPtr == true {
+		modules.BruteForce(url, *workerIntPtr, *filterCodeIntPtr, *verboseBoolPtr)
+	}
 
-modules.BruteForce()
+	resp.Body.Close()
 }
 
 
