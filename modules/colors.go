@@ -6,4 +6,3 @@ const (
 	ColorYellow = "\x1b[33m"
 	ColorReset  = "\x1b[0m"
 )
-

@@ -18,7 +18,7 @@ func worker(jobsChannel <-chan string, wg *sync.WaitGroup, filterCode int, verbo
 }
 
 func checkPath(path string, filterCode int, verbose bool, progressPtr *int64) {
-	
+
 	currentProgress := atomic.AddInt64(progressPtr, 1)
 
 	if verbose {
@@ -55,7 +55,7 @@ func BruteForce(baseURL string, numWorkers int, filterCode int, verbose bool, wo
 		return
 	}
 
-	if(wordlistPath == "wordlist.txt") {
+	if wordlistPath == "wordlist.txt" {
 		wordlistPath = filepath.Join(dir, "wordlist.txt")
 	}
 
@@ -86,7 +86,7 @@ func BruteForce(baseURL string, numWorkers int, filterCode int, verbose bool, wo
 			jobsChannel <- fmt.Sprintf("%s/%s", baseURL, trimmed)
 		}
 	}
-	close(jobsChannel) 
+	close(jobsChannel)
 	wg.Wait()
 	fmt.Println("\nScan complete.")
 }

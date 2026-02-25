@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"log"
 	"flag"
-	"com.github/sammygo/modules"
+	"github.com/Sanyam-Asthana/sammygo/modules"
 )
 
 func main() {
@@ -22,7 +22,7 @@ func main() {
 	workerIntFlagPtr := flag.Int("workers", 20, "Number of workers for directory busting")
 	filterCodeIntFlagPtr := flag.Int("filter", 0, "Only show brute-forced paths with a specific status code")
 	verboseBoolFlagPtr := flag.Bool("verbose", false, "Verbose output for brute-forcing")
-	wordlistPathStringFlagPtr := flag.String("wordlist", "wordlist.txt", "The path for the wordlist for busting")
+	wordlistPathStringFlagPtr := flag.String("wordlist", "../../wordlists/wordlist.txt", "The path for the wordlist for busting")
 
 	flag.Parse()
 
