@@ -41,7 +41,13 @@ func checkPath(path string, filterCode int, verbose bool, progressPtr *int64) {
 	}
 }
 
-
+// BruteForce initiates a dictionary attack on the provided URL
+// Param: baseURL string (The base URL to initiate the attack on)
+// Param: numWorkers int (The number of workers to work together for busting)
+// Param: filterCode int (The status code by which the outputs have to be filtered. 0 for no filtration)
+// Param: verbose bool (Whether to show the progress while busting)
+// Param: wordlistPath string (The path to the dictionary for the dictionary attack)
+// Returns: void
 func BruteForce(baseURL string, numWorkers int, filterCode int, verbose bool, wordlistPath string) {
 	dir, err := os.Getwd()
 	if err != nil {

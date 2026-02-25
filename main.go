@@ -16,8 +16,6 @@ func main() {
 	fmt.Println("|____/ \\__,_|_| |_| |_|_| |_| |_|\\__, |\\____|\\___/ ")
 	fmt.Println("                                 |___/             ")
 	
-	fmt.Println("\nSanyam Asthana, 2026")
-
 	textBoolFlagPtr := flag.Bool("text", false, "Get the response text")
 	headBoolFlagPtr := flag.Bool("head", false, "Get the response header")
 	bustBoolFlagPtr := flag.Bool("bust", false, "Brute-force web directories")
@@ -28,7 +26,13 @@ func main() {
 
 	flag.Parse()
 
-	url := flag.Arg(0)	
+	url := flag.Arg(0)
+
+	if(url == "") {
+		fmt.Println("Please specify a URL!")
+		return
+	}
+
 	fmt.Println("\nInitiated SammyGo on " + url)
 
 	resp, err := http.Get(url);
