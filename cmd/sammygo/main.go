@@ -6,6 +6,7 @@ import (
 	"log"
 	"flag"
 	"github.com/Sanyam-Asthana/sammygo/modules"
+	"io"
 )
 
 func main() {
@@ -42,6 +43,10 @@ func main() {
 		log.Fatal(err)
 	}
 
+	bodyResp, err := io.ReadAll(resp.Body)
+
+	pageBody := string(bodyResp)
+
 	modules.ShowStatusCode(resp)	
 	
 	if *headBoolFlagPtr {
@@ -49,12 +54,18 @@ func main() {
 	}
 	 
 	if *textBoolFlagPtr {
-		modules.ShowBody(resp)
+		modules.ShowBody(pageBody)
 	}
 	
 	if *bustBoolFlagPtr {
 		modules.BruteForce(url, *workerIntFlagPtr, *filterCodeIntFlagPtr, *verboseBoolFlagPtr, *wordlistPathStringFlagPtr)
 	}
+
+	urlQueue := modules.NewQueue()
+
+	modules.Crawl(urlQueue, modules.GetLinks(pageBody))
+
+	fmt.Println(modules.GetLinks(pageBody))
 
 	resp.Body.Close()
 }
