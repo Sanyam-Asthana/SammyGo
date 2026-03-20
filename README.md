@@ -10,7 +10,7 @@ A CLI web-reconnaissance tool written in Go
 <br>
 
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Sanyam-Asthana/SammyGo">
-
+<a href="https://github.com/Sanyam-Asthana/SammyGo/actions/workflows/go.yml"><img alt="GitHub Actions" src="https://github.com/Sanyam-Asthana/SammyGo/actions/workflows/go.yml/badge.svg"></a>
 
 </div>
 
