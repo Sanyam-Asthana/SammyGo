@@ -8,7 +8,11 @@ import (
 	"strings"
 	"sync"
 	"sync/atomic"
+	_ "embed"
 )
+
+//go:embed wordlists/wordlist.txt
+var dat []byte
 
 func worker(jobsChannel <-chan string, wg *sync.WaitGroup, filterCode int, verbose bool, progressPtr *int64) {
 	defer wg.Done()
@@ -59,13 +63,16 @@ func BruteForce(baseURL string, numWorkers int, filterCode int, verbose bool, wo
 		wordlistPath = filepath.Join(dir, "wordlist.txt")
 	}
 
-	dat, err := os.ReadFile(wordlistPath)
+	info, err := os.ReadFile(wordlistPath)
+	var paths []string
+
 	if err != nil {
 		fmt.Println("Wordlist not found at:", wordlistPath)
-		return
+		paths = strings.Split(string(dat), "\n")
+	} else {
+		paths = strings.Split(string(info), "\n")
 	}
 
-	paths := strings.Split(string(dat), "\n")
 	baseURL = strings.TrimSuffix(baseURL, "/")
 
 	jobsChannel := make(chan string, len(paths))

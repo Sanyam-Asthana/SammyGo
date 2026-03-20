@@ -61,11 +61,11 @@ func main() {
 		modules.BruteForce(url, *workerIntFlagPtr, *filterCodeIntFlagPtr, *verboseBoolFlagPtr, *wordlistPathStringFlagPtr)
 	}
 
-	urlQueue := modules.NewQueue()
+	// urlQueue := modules.NewQueue()
 
-	modules.Crawl(urlQueue, modules.GetLinks(pageBody))
+	// modules.Crawl(urlQueue, modules.GetLinks(pageBody))
 
-	fmt.Println(modules.GetLinks(pageBody))
+	// fmt.Println(modules.GetLinks(pageBody))
 
 	resp.Body.Close()
 }
